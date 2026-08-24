@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,29 +23,26 @@
 
 * { 
   box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
 } 
 
 html { 
   scroll-behavior: smooth; 
+  background-color: var(--bg);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  /* Background SVG noise integrated directly on body to prevent glyph bounding box rendering artifacts */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
   color: var(--ink);
   font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .07;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-  z-index: 20;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a { 
@@ -60,7 +56,6 @@ a {
   text-transform: uppercase;
 }
 
-/* Navigation */
 nav {
   position: fixed;
   z-index: 30;
@@ -71,8 +66,17 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 22px 5vw;
-  mix-blend-mode: difference;
+  background: rgba(11, 13, 12, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: #fff;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-brand-dot {
@@ -82,7 +86,6 @@ nav {
   border-radius: 50%;
   box-shadow: 0 0 10px var(--acid);
   display: inline-block;
-  margin-right: 8px;
 }
 
 .nav-right {
@@ -90,17 +93,20 @@ nav {
   gap: 28px;
 }
 
+.nav-right a {
+  transition: color 0.2s ease;
+}
+
 .nav-right a:hover {
   color: var(--acid);
 }
 
-/* Hero Section */
 .hero {
   min-height: 100vh;
   display: grid;
   place-items: center;
   position: relative;
-  padding: 100px 5vw 60px;
+  padding: 120px 5vw 60px;
   overflow: hidden;
 }
 
@@ -162,12 +168,14 @@ nav {
 }
 
 .hero h1 {
-  font-size: clamp(48px, 10vw, 150px);
-  line-height: .82;
-  letter-spacing: -.08em;
+  font-size: clamp(42px, 9.5vw, 140px);
+  line-height: .88;
+  letter-spacing: -.05em;
   margin: 0;
   font-weight: 800;
   text-transform: uppercase;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .hero h1 span {
@@ -197,7 +205,6 @@ nav {
   z-index: 1;
 }
 
-/* Sections & Intro */
 section {
   padding: 100px 5vw;
 }
@@ -226,7 +233,6 @@ section {
   margin: 0;
 }
 
-/* Routes List */
 .routes {
   display: grid;
   gap: 2px;
@@ -242,7 +248,7 @@ section {
   border-top: 1px solid var(--line);
   position: relative;
   overflow: hidden;
-  transition: .45s ease;
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), color .35s ease;
   color: inherit;
   text-decoration: none;
 }
@@ -257,7 +263,7 @@ section {
   inset: 0;
   background: var(--acid);
   transform: translateX(-102%);
-  transition: .45s ease;
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 0;
 }
 
@@ -278,6 +284,7 @@ section {
 .num {
   font-size: 12px;
   color: var(--acid);
+  transition: color .35s ease;
 }
 
 .route:hover .num {
@@ -302,6 +309,7 @@ section {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+  transition: color .35s ease;
 }
 
 .route:hover .meta {
@@ -316,6 +324,7 @@ section {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: .1em;
+  transition: border-color .35s ease, color .35s ease;
 }
 
 .route:hover .badge {
@@ -323,7 +332,6 @@ section {
   color: #0b0d0c;
 }
 
-/* Field Note & Footer */
 .note {
   margin-top: 80px;
   padding: 25px 0;
@@ -389,7 +397,7 @@ footer {
 <body>
 
 <nav>
-  <div class="mono">
+  <div class="mono nav-brand">
     <span class="nav-brand-dot"></span>BOLZANO / SOUTH TYROL
   </div>
   <div class="nav-right mono">
