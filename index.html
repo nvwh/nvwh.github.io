@@ -392,6 +392,44 @@ footer {
     gap: 16px;
   }
 }
+@media (max-width: 640px) {
+  .hero {
+    min-height: 78vh;
+    min-height: 78svh;
+    place-items: end start;
+    padding: 96px 22px 32px;
+  }
+  .hero-content { text-align: left; }
+
+  .hero h1 {
+    font-size: clamp(46px, 15vw, 78px);
+    line-height: .9;
+    letter-spacing: -.04em;
+  }
+  .hero h1 .outline { -webkit-text-stroke-width: 1px; }
+
+  .eyebrow { margin-bottom: 14px; font-size: 9px; }
+
+  .hero-sub {
+    margin: 22px 0 0;
+    text-align: left;
+    font-size: 15px;
+    max-width: none;
+  }
+
+  .orbit { display: none; }
+  .hero-grid { opacity: .12; }
+
+  .scroll {
+    position: static;
+    transform: none;
+    margin-top: 26px;
+    animation: none;
+  }
+
+  section { padding: 56px 22px; }
+  nav { padding: 14px 22px; }
+}
 </style>
 </head>
 <body>
