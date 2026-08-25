@@ -1,563 +1,454 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Operation Epic Dolomites - Dolomites & South Tyrol</title>
-<meta name="description" content="Six hike options around Bolzano - alpine lakes, Dolomite walls, panoramic ridges and low-key viewpoints.">
-
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>">
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operation Epic Dolomites - Route Table</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;600;700;800&display=swap');
+:root{--bg:#0f1110;--panel:#171a18;--line:#303531;--text:#e8e5dc;--muted:#92968f;--gold:#c9a45c;--blue:#83a7b8}
+*{box-sizing:border-box}body{margin:0;background:#0b0d0c;color:var(--text);font:13px/1.5 Consolas,"SFMono-Regular",Menlo,monospace}
+.window{width:min(1180px,96vw);margin:4vh auto;background:var(--panel);border:1px solid #3a3f3b;box-shadow:0 24px 80px #0009}
+.titlebar{height:34px;background:#202420;border-bottom:1px solid #363b37;display:flex;align-items:center;padding:0 12px;gap:8px;color:#bfc2ba;font-size:12px}.dot{width:10px;height:10px;border-radius:50%;background:#555}.dot:first-child{background:#8b6258}.dot:nth-child(2){background:#9b895b}.dot:nth-child(3){background:#657b67}.filename{margin-left:8px}
+.menubar{height:24px;background:#1b1e1c;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:0 12px;color:#9a9d97;font-size:11px;overflow-x:auto;white-space:nowrap}
+.menubar span{cursor:default}
+.tabs{height:35px;border-bottom:1px solid var(--line);display:flex;align-items:end}
+.tab{padding:8px 14px;border-right:1px solid var(--line);color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px}
+.tab.active{background:var(--panel);color:var(--text);border-top:2px solid var(--gold);padding-top:6px}
+.tab-x{color:#5c615c;font-size:12px}
+.tab:hover{color:var(--text)}
+.editor{display:grid;grid-template-columns:48px 1fr}.gutter{background:#121513;color:#555b55;text-align:right;padding:20px 10px;line-height:2.7;border-right:1px solid var(--line);user-select:none}.content{padding:18px 22px 28px;overflow:auto}.comment{color:#68736b}.heading{color:var(--gold)}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-family:inherit}th,td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}th{background:#1e231f;color:#b9bdb4;font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.08em}td:first-child{color:var(--gold);width:55px;text-align:center}td:nth-child(2){font-weight:600;font-size:15px;white-space:nowrap}td:nth-child(3){color:var(--muted)}a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline;color:#b2d0dc}.status{margin-top:18px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);padding-top:12px}.status b{color:var(--gold);font-weight:400}
+.npp-statusbar{height:22px;border-top:1px solid var(--line);background:#171a18;display:flex;justify-content:flex-end;font-size:11px;color:var(--muted)}
+.npp-statusbar span{padding:0 12px;border-left:1px solid var(--line);display:flex;align-items:center}
+@media(max-width:700px){.window{width:100%;margin:0;border-left:0;border-right:0}.editor{grid-template-columns:32px 1fr}.gutter{padding:18px 5px}.content{padding:15px 12px}.filename{display:none}th,td{padding:9px}.table-wrap{overflow-x:auto}td:nth-child(2){white-space:normal}.npp-statusbar span:nth-child(1),.npp-statusbar span:nth-child(2){display:none}}
 
-:root {
-  --bg: #0b0d0c;
-  --ink: #f1f0e9;
-  --muted: #a9aaa3;
-  --line: #2b2e2b;
-  --acid: #d7ff43;
-  --card: #121513;
-}
-
-* { 
-  box-sizing: border-box; 
-  margin: 0;
-  padding: 0;
-} 
-
-html { 
-  scroll-behavior: smooth; 
-  background-color: var(--bg);
-}
-
-body {
-  margin: 0;
-  background-color: var(--bg);
-  /* Background SVG noise integrated directly on body to prevent glyph bounding box rendering artifacts */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  color: var(--ink);
-  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-a { 
-  color: inherit; 
-  text-decoration: none; 
-}
-
-.mono {
-  font: 400 11px/1.4 "DM Mono", monospace;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-nav {
-  position: fixed;
-  z-index: 30;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 5vw;
-  background: rgba(11, 13, 12, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #fff;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav-brand-dot {
-  width: 7px;
-  height: 7px;
-  background-color: var(--acid);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--acid);
-  display: inline-block;
-}
-
-.nav-right {
-  display: flex;
-  gap: 28px;
-}
-
-.nav-right a {
-  transition: color 0.2s ease;
-}
-
-.nav-right a:hover {
-  color: var(--acid);
-}
-
-.hero {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  position: relative;
-  padding: 120px 5vw 60px;
-  overflow: hidden;
-}
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background: 
-    linear-gradient(90deg, transparent 49.9%, #202420 50%, transparent 50.1%),
-    linear-gradient(0deg, transparent 49.9%, #202420 50%, transparent 50.1%);
-  opacity: .22;
-  pointer-events: none;
-}
-
-.orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 70vw;
-  height: 70vw;
-  max-width: 680px;
-  max-height: 680px;
-  transform: translate(-50%, -50%);
-  border: 1px solid #272b27;
-  border-radius: 50%;
-  animation: spin 45s linear infinite;
-  pointer-events: none;
-}
-
-.orbit::before, .orbit::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--acid);
-  border-radius: 50%;
-  top: 50%;
-  left: -4px;
-  box-shadow: 0 0 40px 12px #d7ff4355;
-}
-
-.orbit::after {
-  top: 20%;
-  left: 86%;
-  width: 4px;
-  height: 4px;
-}
-
-.hero-content {
-  position: relative;
-  max-width: 1200px;
-  width: 100%;
-  text-align: center;
-  z-index: 1;
-}
-
-.eyebrow {
-  color: var(--acid);
-  margin-bottom: 28px;
-}
-
-.hero h1 {
-  font-size: clamp(42px, 9.5vw, 140px);
-  line-height: .88;
-  letter-spacing: -.05em;
-  margin: 0;
-  font-weight: 800;
-  text-transform: uppercase;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.hero h1 span {
-  display: block;
-}
-
-.hero h1 .outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--ink);
-}
-
-.hero-sub {
-  max-width: 580px;
-  margin: 42px auto 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.scroll {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--muted);
-  animation: bob 2s ease-in-out infinite;
-  z-index: 1;
-}
-
-section {
-  padding: 100px 5vw;
-}
-
-.intro {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 8vw;
-  border-top: 1px solid var(--line);
-  padding-top: 28px;
-}
-
-.intro h2 {
-  font-size: clamp(36px, 5vw, 72px);
-  letter-spacing: -.06em;
-  margin: 0;
-  line-height: .95;
-  font-weight: 800;
-}
-
-.intro p {
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 760px;
-  color: #c4c6bf;
-  margin: 0;
-}
-
-.routes {
-  display: grid;
-  gap: 2px;
-  margin-top: 70px;
-}
-
-.route {
-  display: grid;
-  grid-template-columns: 80px 1.6fr 1fr 180px;
-  gap: 30px;
-  align-items: center;
-  padding: 28px 18px;
-  border-top: 1px solid var(--line);
-  position: relative;
-  overflow: hidden;
-  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), color .35s ease;
-  color: inherit;
-  text-decoration: none;
-}
-
-.route:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.route::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--acid);
-  transform: translateX(-102%);
-  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 0;
-}
-
-.route * {
-  position: relative;
-  z-index: 1;
-}
-
-.route:hover {
-  color: #0b0d0c;
-  transform: translateX(8px);
-}
-
-.route:hover::before {
-  transform: translateX(0);
-}
-
-.num {
-  font-size: 12px;
-  color: var(--acid);
-  transition: color .35s ease;
-}
-
-.route:hover .num {
-  color: #0b0d0c;
-}
-
-.name {
-  font-size: clamp(24px, 3vw, 43px);
-  font-weight: 700;
-  letter-spacing: -.045em;
-}
-
-.route-link {
-  margin-top: 6px;
-  display: inline-block;
-  font-size: 11px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.meta {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-  transition: color .35s ease;
-}
-
-.route:hover .meta {
-  color: #252a23;
-}
-
-.badge {
-  justify-self: end;
-  border: 1px solid #41463f;
-  padding: 9px 13px;
-  border-radius: 999px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  transition: border-color .35s ease, color .35s ease;
-}
-
-.route:hover .badge {
-  border-color: #252a23;
-  color: #0b0d0c;
-}
-
-.note {
-  margin-top: 80px;
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  color: var(--muted);
-}
-
-.note strong {
-  color: var(--ink);
-}
-
-footer {
-  padding: 80px 5vw 35px;
-  display: flex;
-  justify-content: space-between;
-  color: var(--muted);
-  font-size: 11px;
-  border-top: 1px solid var(--line);
-}
-
-/* Animations */
-@keyframes spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes bob {
-  50% { transform: translate(-50%, 8px); }
-}
-
-@media(max-width: 800px) {
-  nav { padding: 17px 5vw; }
-  .nav-right { display: none; }
-  .intro { grid-template-columns: 1fr; }
-  
-  .route {
-    grid-template-columns: 35px 1fr;
-    gap: 16px;
-  }
-  
-  .route .meta { grid-column: 2; }
-  .badge { grid-column: 2; justify-self: start; margin-top: 4px; }
-  
-  .note { 
-    display: block; 
-  }
-  
-  .note span { 
-    display: block; 
-    margin-top: 10px; 
-  }
-  
-  footer {
-    flex-direction: column;
-    gap: 16px;
-  }
-}
-@media (max-width: 640px) {
-  .hero {
-    min-height: 78vh;
-    min-height: 78svh;
-    place-items: end start;
-    padding: 96px 22px 32px;
-  }
-  .hero-content { text-align: left; }
-
-  .hero h1 {
-    font-size: clamp(46px, 15vw, 78px);
-    line-height: .9;
-    letter-spacing: -.04em;
-  }
-  .hero h1 .outline { -webkit-text-stroke-width: 1px; }
-
-  .eyebrow { margin-bottom: 14px; font-size: 9px; }
-
-  .hero-sub {
-    margin: 22px 0 0;
-    text-align: left;
-    font-size: 15px;
-    max-width: none;
-  }
-
-  .orbit { display: none; }
-  .hero-grid { opacity: .12; }
-
-  .scroll {
-    position: static;
-    transform: none;
-    margin-top: 26px;
-    animation: none;
-  }
-
-  section { padding: 56px 22px; }
-  nav { padding: 14px 22px; }
-}
+.banana-overlay{position:fixed;inset:0;background:rgba(5,6,5,.8);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px}
+.banana-overlay[hidden]{display:none}
+.banana-window{width:min(560px,94vw);background:var(--panel);border:1px solid #3a3f3b;box-shadow:0 24px 80px #000c}
+.banana-close{margin-left:auto;background:none;border:none;color:#bfc2ba;font-size:18px;cursor:pointer;line-height:1;padding:2px 6px}
+.banana-close:hover{color:#fff}
+.banana-comment{padding:10px 14px 0;color:#68736b;font-size:12px}
+#bananaCanvas{width:100%;height:380px;display:block;margin-top:8px;cursor:grab;touch-action:none}
 </style>
 </head>
 <body>
+<div class="window">
+<div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="filename">operation-epic-dolomites.txt - Notepad++</span></div>
+<div class="menubar"><span>File</span><span>Edit</span><span>Search</span><span>View</span><span>Encoding</span><span>Language</span><span>Settings</span><span>Tools</span><span>Macro</span><span>Run</span><span>Plugins</span><span>Window</span><span>?</span></div>
+<div class="tabs"><div class="tab active" id="tabRoutes">routes.txt <span class="tab-x">×</span></div><div class="tab" id="tabSources">sources.nan <span class="tab-x">×</span></div></div>
+<div class="editor">
+<div class="gutter">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
+<div class="content">
+<div class="comment">// six hike options around Bolzano / South Tyrol</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>Hike</th><th>Link</th></tr></thead>
+<tbody>
+<tr><td>01</td><td>Laghi di Sopranes</td><td><a target="_blank" href="https://www.alltrails.com/trail/italy/south-tyrol/laghi-di-sopranes-lago-lungo-lago-verde-lago-vizze">AllTrails ↗</a></td></tr>
+<tr><td>02</td><td>Sassongher</td><td><a target="_blank" href="https://www.alta-badia.org/it/sport-e-tempo-libero/montagne-ed-escursioni/sul-sassongher/">Alta Badia ↗</a></td></tr>
+<tr><td>03</td><td>Grande Kreuzjochrunde</td><td><a target="_blank" href="https://www.outdooractive.com/en/route/hiking-trail/bozen-umgebung/large-kreuzjoch-circular-route-kreuzjochrunde-/810054763/">Outdooractive ↗</a></td></tr>
+<tr><td>04</td><td>Kohlern / Three Viewpoints</td><td><a target="_blank" href="https://www.suedtirol.info/en/en/experiences-and-events/plp-experiences/experiences-south-tyrol/pdp-experience.smgpoid8cb7ca58b554e90756a1b2481177f8b.a-trip-to-three-viewpoints.colle-kohlern">South Tyrol ↗</a></td></tr>
+<tr><td>05</td><td>Adolf Munkel Trail</td><td><a target="_blank" href="https://www.moonhoneytravel.com/hiking-adolf-munkel-trail-dolomites/">Moon &amp; Honey ↗</a></td></tr>
+<tr><td>06</td><td>Piz Boè</td><td><a target="_blank" href="https://www.alta-badia.org/it/sport-e-tempo-libero/montagne-ed-escursioni/sul-piz-boe/">Alta Badia ↗</a></td></tr>
+</tbody></table></div>
+<div class="status"><b>6 routes</b> &nbsp;|&nbsp; Bolzano / Dolomites</div>
+</div></div>
+<div class="npp-statusbar"><span>length : 1,842</span><span>lines : 6</span><span>Ln : 1&nbsp;&nbsp;Col : 1</span><span>Windows (CR LF)</span><span>UTF-8</span><span>INS</span></div>
+</div>
 
-<nav>
-  <div class="mono nav-brand">
-    <span class="nav-brand-dot"></span>BOLZANO / SOUTH TYROL
-  </div>
-  <div class="nav-right mono">
-    <a href="#routes">routes</a>
-    <a href="#sources">sources</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-grid"></div>
-  <div class="orbit"></div>
-  
-  <div class="hero-content">
-    <div class="mono eyebrow">BOLZANO → DOLOMITES / SOUTH TYROL</div>
-    <h1>
-      <span>OPERATION</span>
-      <span class="outline">EPIC</span>
-      <span>DOLOMITES.</span>
-    </h1>
-    <p class="hero-sub">Six hike options worth driving for. Alpine lakes, impossible rock walls, panoramic ridges and viewpoints - selected for scenery first, not crowds or convenience.</p>
-  </div>
-  
-  <div class="scroll mono">↓ scroll the ridge</div>
-</header>
-
-<section id="routes">
-  <div class="intro">
-    <div>
-      <div class="mono" style="color:var(--acid)">THE SHORTLIST</div>
-      <h2>Six ways<br>up.</h2>
+<div class="banana-overlay" id="bananaOverlay" hidden>
+  <div class="banana-window">
+    <div class="titlebar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="filename">banana_voxel.glb — Preview</span>
+      <button class="banana-close" id="bananaClose" aria-label="Close">×</button>
     </div>
-    <p><strong>Sassongher</strong> is the summit mission. <strong>Sopranes</strong> is the alpine-lake mission. <strong>Adolf Munkel</strong> is the visual knockout with little vertical gain. <strong>Kreuzjoch</strong> is the quiet long day. <strong>Kohlern</strong> is the fast local hit. <strong>Piz Boè</strong> is the accessible 3000m giant.</p>
+    <div class="banana-comment">// you just unlocked an easter egg - drag and play</div>
+    <canvas id="bananaCanvas"></canvas>
   </div>
+</div>
 
-  <div class="routes">
-    <!-- Route 01 -->
-    <a class="route" href="https://www.alltrails.com/trail/italy/south-tyrol/laghi-di-sopranes-lago-lungo-lago-verde-lago-vizze" target="_blank" rel="noopener">
-      <div class="num mono">01</div>
-      <div>
-        <div class="name">Laghi di Sopranes</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">13.5 km · hard<br>+1,174 m · ~2,444 m high<br>Highest high-altitude lake district in Europe.</div>
-      <div class="badge">ALPINE LAKES</div>
-    </a>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-    <!-- Route 02 -->
-    <a class="route" href="https://www.alta-badia.org/it/sport-e-tempo-libero/montagne-ed-escursioni/sul-sassongher/" target="_blank" rel="noopener">
-      <div class="num mono">02</div>
-      <div>
-        <div class="name">Sassongher</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">9.9 km · difficult<br>+1,224 m · 2,665 m summit<br>Rock, fixed ropes, Sella + Marmolada.</div>
-      <div class="badge">SUMMIT</div>
-    </a>
+// --- build a single voxel banana. The centerline is an analytic circular arc lying
+// flat in the XY plane, so the tangent and normal are plain 2D trig and the cross
+// section can never degenerate. Every lattice cell is classified in a SINGLE pass
+// with the stem tested first, so the stalk stays solidly brown with no yellow cubes
+// written into the same cells. Geometry verified numerically (ASCII projections)
+// before wiring into the scene. ---
+function buildBananaVoxels() {
+  const gridSize = 0.40;
+  const R = 4.0;
+  const th0 = -0.85, th1 = 0.85;
+  const NS = 220;
 
-    <!-- Route 03 -->
-    <a class="route" href="https://www.outdooractive.com/en/route/hiking-trail/bozen-umgebung/large-kreuzjoch-circular-route-kreuzjochrunde-/810054763/" target="_blank" rel="noopener">
-      <div class="num mono">03</div>
-      <div>
-        <div class="name">Grande Kreuzjochrunde</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">17.3 km · moderate<br>+678 m · 2,084 m high<br>360° ridge panorama; quieter Sarntal terrain.</div>
-      <div class="badge">QUIET RIDGE</div>
-    </a>
+  const samples = [];
+  for (let k = 0; k <= NS; k++) {
+    const t = k / NS, th = th0 + t * (th1 - th0);
+    samples.push({
+      x: R * Math.sin(th) - R * Math.sin(th0),
+      y: R * Math.cos(th0) - R * Math.cos(th),
+      th, t
+    });
+  }
 
-    <!-- Route 04 -->
-    <a class="route" href="https://www.suedtirol.info/en/en/experiences-and-events/plp-experiences/experiences-south-tyrol/pdp-experience.smgpoid8cb7ca58b554e90756a1b2481177f8b.a-trip-to-three-viewpoints.colle-kohlern" target="_blank" rel="noopener">
-      <div class="num mono">04</div>
-      <div>
-        <div class="name">Kohlern / Three Viewpoints</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">7.6 km · easy<br>+337 m · 1,558 m high<br>Schlern, Rosengarten, Latemar + valley views.</div>
-      <div class="badge">QUICK HIT</div>
-    </a>
+  const radiusAt = (t) => {
+    // fat body with BLUNT ends: the end tapers stop well short of a point
+    const neck = Math.min(1, t / 0.30);
+    const belly = 0.90 + 0.10 * Math.sin(Math.PI * t);
+    const tip = t > 0.84 ? Math.max(0.74, 1 - (t - 0.84) / 0.16 * 0.62) : 1;
+    return 1.40 * (0.55 + 0.45 * neck) * belly * tip;
+  };
 
-    <!-- Route 05 -->
-    <a class="route" href="https://www.moonhoneytravel.com/hiking-adolf-munkel-trail-dolomites/" target="_blank" rel="noopener">
-      <div class="num mono">05</div>
-      <div>
-        <div class="name">Adolf Munkel Trail</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">~9.5 km · easy/moderate<br>+400 m · ~2,050 m high<br>Directly beneath the Geisler / Odle walls.</div>
-      <div class="badge">VISUAL HIT</div>
-    </a>
+  function insideBody(x, y, z) {
+    let best = Infinity, bi = 0;
+    for (let i = 0; i < samples.length; i++) {
+      const s = samples[i];
+      const d2 = (x - s.x) * (x - s.x) + (y - s.y) * (y - s.y);
+      if (d2 < best) { best = d2; bi = i; }
+    }
+    const s = samples[bi];
+    const nx = Math.sin(s.th), ny = -Math.cos(s.th);
+    const rn = (x - s.x) * nx + (y - s.y) * ny;
+    const dist = Math.sqrt(rn * rn + z * z);
+    const phi = Math.atan2(z, rn);
+    return dist <= radiusAt(s.t) * (1 + 0.11 * Math.cos(5 * phi));
+  }
 
-    <!-- Route 06 -->
-    <a class="route" href="https://www.alta-badia.org/it/sport-e-tempo-libero/montagne-ed-escursioni/sul-piz-boe/" target="_blank" rel="noopener">
-      <div class="num mono">06</div>
-      <div>
-        <div class="name">Piz Boè</div>
-        <span class="route-link">open route ↗</span>
-      </div>
-      <div class="meta">~6.5 km · moderate/hard<br>+460 m · 3,152 m summit<br>Lunar plateau, accessible 3000m peak & Marmolada views.</div>
-      <div class="badge">3000M PEAK</div>
-    </a>
-  </div>
+  let mnX = Infinity, mxX = -Infinity, mnY = Infinity, mxY = -Infinity;
+  samples.forEach(s => {
+    mnX = Math.min(mnX, s.x); mxX = Math.max(mxX, s.x);
+    mnY = Math.min(mnY, s.y); mxY = Math.max(mxY, s.y);
+  });
+  const pad = 1.8;
+  mnX -= pad; mxX += pad; mnY -= pad; mxY += pad;
+  const mnZ = -1.8, mxZ = 1.8;
 
-  <div class="note">
-    <div><strong>Field notes:</strong> These aren't equivalent hikes.</div>
-    <span>Vertical gain ranges from a 337 m viewpoint circuit to 1,224 m for a serious summit. Pick the experience, not the number.</span>
-  </div>
-</section>
+  const yellow = () => new THREE.Color().setHSL(0.128, 0.84, 0.505 + (Math.random() - 0.5) * 0.03);
 
-<section id="sources" style="border-top: 1px solid var(--line);">
-  <div class="intro">
-    <div>
-      <div class="mono" style="color:var(--acid)">SOURCE CHECK</div>
-      <h2>Know<br>before go.</h2>
-    </div>
-    <p><strong>Sopranes:</strong> AllTrails lists 13.5 km and 3,854 ft / ~1,175 m gain for the selected three-lake route. <strong>Sassongher:</strong> Alta Badia lists 9.9 km, +1,224 m and 2,665 m, and warns that the route is popular in high summer. <strong>Kreuzjoch:</strong> Outdooractive lists 17.3 km and +678 m. <strong>Kohlern:</strong> South Tyrol lists 7.6 km and +337 m. <strong>Piz Boè:</strong> Alta Badia lists ~6.5 km and +460 m elevation to the 3,152 m summit. <strong>Adolf Munkel:</strong> recent GPS routes cluster around 9 - 10 km and ~400 m gain.</p>
-  </div>
-</section>
+  const voxels = [];
+  for (let x = mnX; x <= mxX; x += gridSize) {
+    for (let y = mnY; y <= mxY; y += gridSize) {
+      for (let z = mnZ; z <= mxZ; z += gridSize) {
+        if (insideBody(x, y, z)) { voxels.push({ x, y, z, color: yellow() }); }
+      }
+    }
+  }
 
-<footer>
-  <span class="mono">OPERATION EPIC DOLOMITES</span>
-  <span class="mono">BUILT FOR THE NEXT MOUNTAIN DAY</span>
-</footer>
+  // recenter on the bounding-box center so the camera can just target the origin
+  let ax0 = Infinity, ax1 = -Infinity, ay0 = Infinity, ay1 = -Infinity, az0 = Infinity, az1 = -Infinity;
+  voxels.forEach(v => {
+    ax0 = Math.min(ax0, v.x); ax1 = Math.max(ax1, v.x);
+    ay0 = Math.min(ay0, v.y); ay1 = Math.max(ay1, v.y);
+    az0 = Math.min(az0, v.z); az1 = Math.max(az1, v.z);
+  });
+  const ccx = (ax0 + ax1) / 2, ccy = (ay0 + ay1) / 2, ccz = (az0 + az1) / 2;
+  const maxDim = Math.max(ax1 - ax0, ay1 - ay0, az1 - az0);
 
-</body>
-</html>
+  return {
+    maxDim,
+    list: voxels.map(v => ({ position: new THREE.Vector3(v.x - ccx, v.y - ccy, v.z - ccz), color: v.color }))
+  };
+}
+
+// --- voxelize the REAL model the codrops/tympanus demo uses, with the same method
+// it uses: cast a ray from each lattice point and count crossings (odd = inside the
+// mesh). Params mirror the tutorial: model scaled to size 9, 0.24 grid, and the voxel
+// colour taken from the source material as setHSL(h, s*0.8, l*0.8+0.2).
+// If the asset can't be fetched (offline, CORS, host down) we fall back to the
+// procedural banana above, so the easter egg always renders something. ---
+// Trim the thin stalk/handle protrusion off either end of the dominant axis: walk
+// inward while the slices are far thinner than the body, stopping at the first solid
+// slice. Verified against a bar-with-stalk (stalk removed, body untouched) and a plain
+// tapered banana (left alone), so a normal shape is never eaten into.
+function trimProtrusion(list, step, opts) {
+  opts = opts || {};
+  const thinFrac = opts.thinFrac !== undefined ? opts.thinFrac : 0.40;
+  const maxFrac = opts.maxFrac !== undefined ? opts.maxFrac : 0.30;
+  if (!list.length) return list;
+
+  const axes = ['x', 'y', 'z'], span = {};
+  axes.forEach(a => {
+    let lo = Infinity, hi = -Infinity;
+    list.forEach(v => { const q = v.position[a]; lo = Math.min(lo, q); hi = Math.max(hi, q); });
+    span[a] = { lo, hi, len: hi - lo };
+  });
+  const axis = axes.reduce((b, a) => (span[a].len > span[b].len ? a : b), 'x');
+  const lo = span[axis].lo, len = span[axis].len;
+
+  const nSlices = Math.max(1, Math.round(len / step) + 1);
+  const idxOf = (v) => Math.min(nSlices - 1, Math.max(0, Math.round((v.position[axis] - lo) / step)));
+  const counts = new Array(nSlices).fill(0);
+  list.forEach(v => { counts[idxOf(v)]++; });
+
+  const peak = Math.max.apply(null, counts);
+  const thin = peak * thinFrac;
+  const maxCut = Math.floor(nSlices * maxFrac);
+
+  let cutLo = 0;
+  while (cutLo < maxCut && counts[cutLo] > 0 && counts[cutLo] < thin) cutLo++;
+  if (cutLo >= maxCut) cutLo = 0;                    // never hit a solid slice: don't cut
+  let cutHi = nSlices - 1, steps = 0;
+  while (steps < maxCut && counts[cutHi] > 0 && counts[cutHi] < thin) { cutHi--; steps++; }
+  if (steps >= maxCut) cutHi = nSlices - 1;
+
+  const kept = list.filter(v => { const i = idxOf(v); return i >= cutLo && i <= cutHi; });
+  return kept.length ? kept : list;
+}
+
+const MODEL_URL = 'https://ksenia-k.com/models/Banana%20Bundle.glb';
+const MODEL_PARAMS = { modelSize: 9, gridSize: 0.24, boxSize: 0.24, boxRoundness: 0.03 };
+
+function voxelizeGltf(importedScene) {
+  const rayCaster = new THREE.Raycaster();
+  const importedMeshes = [];
+  importedScene.traverse((child) => {
+    if (child.isMesh) { child.material.side = THREE.DoubleSide; importedMeshes.push(child); }
+  });
+  if (!importedMeshes.length) throw new Error('no meshes in model');
+
+  let bbox = new THREE.Box3().setFromObject(importedScene);
+  const size = bbox.getSize(new THREE.Vector3());
+  const scaleFactor = MODEL_PARAMS.modelSize / size.length();
+  const center = bbox.getCenter(new THREE.Vector3()).multiplyScalar(-scaleFactor);
+  importedScene.scale.multiplyScalar(scaleFactor);
+  importedScene.position.copy(center);
+  importedScene.updateMatrixWorld(true);
+  bbox = new THREE.Box3().setFromObject(importedScene);
+
+  const isInside = (pos, mesh) => {
+    rayCaster.set(pos, new THREE.Vector3(0, 0, 1));
+    return rayCaster.intersectObject(mesh, false).length % 2 === 1;
+  };
+
+  const g = MODEL_PARAMS.gridSize;
+  const out = [];
+  for (let i = bbox.min.x; i < bbox.max.x; i += g) {
+    for (let j = bbox.min.y; j < bbox.max.y; j += g) {
+      for (let k = bbox.min.z; k < bbox.max.z; k += g) {
+        const pos = new THREE.Vector3(i, j, k);
+        for (let m = 0; m < importedMeshes.length; m++) {
+          const mesh = importedMeshes[m];
+          if (isInside(pos, mesh)) {
+            const color = new THREE.Color();
+            const src = mesh.material && mesh.material.color ? mesh.material.color : new THREE.Color(0xcccc33);
+            const { h, s, l } = src.getHSL(color);
+            // demo's rule, nudged warmer: hue toward orange, a little more saturation
+            color.setHSL(Math.max(0, h - 0.012), Math.min(1, s * 0.94), l * 0.8 + 0.2);
+            out.push({ position: pos, color });
+            break;
+          }
+        }
+      }
+    }
+  }
+  if (!out.length) throw new Error('voxelization produced nothing');
+
+  // drop the stalk/handle protrusion
+  const trimmed = trimProtrusion(out, g);
+  out.length = 0;
+  Array.prototype.push.apply(out, trimmed);
+
+  let x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity,z0=Infinity,z1=-Infinity;
+  out.forEach(v => {
+    x0=Math.min(x0,v.position.x); x1=Math.max(x1,v.position.x);
+    y0=Math.min(y0,v.position.y); y1=Math.max(y1,v.position.y);
+    z0=Math.min(z0,v.position.z); z1=Math.max(z1,v.position.z);
+  });
+  const cx=(x0+x1)/2, cy=(y0+y1)/2, cz=(z0+z1)/2;
+  out.forEach(v => v.position.set(v.position.x-cx, v.position.y-cy, v.position.z-cz));
+  return { maxDim: Math.max(x1-x0, y1-y0, z1-z0), list: out, fromModel: true };
+}
+
+function loadRealModel() {
+  return new Promise((resolve, reject) => {
+    const to = setTimeout(() => reject(new Error('timeout')), 12000);
+    new GLTFLoader().load(
+      MODEL_URL,
+      (gltf) => { clearTimeout(to); try { resolve(voxelizeGltf(gltf.scene)); } catch (e) { reject(e); } },
+      undefined,
+      (err) => { clearTimeout(to); reject(err); }
+    );
+  });
+}
+
+// --- scene setup (lazy, created on first open) ---
+let ready = false, scene, camera, renderer, controls, mesh, dummy, targets, ground, objMaxDim = 9;
+let voxelsPromise = null;
+
+function initScene() {
+  const canvas = document.getElementById('bananaCanvas');
+  canvas.style.touchAction = 'none'; // let OrbitControls own the drag gesture on mobile, not page scroll
+  renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.shadowMap.enabled = true;
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 1.15));
+  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  key.position.set(4, 8, 6);
+  key.castShadow = true;
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.5);
+  fill.position.set(-5, -2, -4);
+  scene.add(fill);
+
+  ground = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.ShadowMaterial({ opacity: 0.18 }));
+  ground.rotation.x = -Math.PI / 2;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0, 0);
+  controls.enableDamping = true;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 2.2;
+  controls.enablePan = false;
+  controls.rotateSpeed = 0.9;
+  // full free rotation so it can be flipped all the way around to face you
+  controls.minPolarAngle = 0;
+  controls.maxPolarAngle = Math.PI;
+  controls.minAzimuthAngle = -Infinity;
+  controls.maxAzimuthAngle = Infinity;
+  controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+  // hand full control to the user as soon as they touch it, no fighting the auto-spin
+  controls.addEventListener('start', () => { controls.autoRotate = false; });
+
+  dummy = new THREE.Object3D();
+  ready = true;
+  resizeCanvas();
+  loop();
+}
+
+// swap in a voxel set (from the real model, or the procedural fallback)
+function applyVoxels(built) {
+  targets = built.list;
+  objMaxDim = built.maxDim;
+
+  const camDist = built.maxDim * 1.55;
+  camera.position.set(0, built.maxDim * 0.18, camDist);
+  controls.minDistance = camDist * 0.4;
+  controls.maxDistance = camDist * 2.2;
+  controls.update();
+  ground.position.y = -built.maxDim * 0.55;
+
+  if (mesh) { scene.remove(mesh); mesh.geometry.dispose(); mesh.material.dispose(); }
+  // cube slightly smaller than the lattice step, so there is visible space between voxels
+  const step = built.fromModel ? MODEL_PARAMS.boxSize : 0.40;
+  const cube = step * 0.88;
+  const geo = new RoundedBoxGeometry(cube, cube, cube, 2, cube * 0.16);
+  const mat = new THREE.MeshLambertMaterial({});
+  mesh = new THREE.InstancedMesh(geo, mat, targets.length);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  scene.add(mesh);
+}
+
+function resizeCanvas() {
+  const el = document.getElementById('bananaCanvas');
+  const w = el.clientWidth, h = el.clientHeight;
+  if (!w || !h) return;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+
+function loop() {
+  requestAnimationFrame(loop);
+  if (!document.getElementById('bananaOverlay').hidden) {
+    controls.update();
+    renderer.render(scene, camera);
+  }
+}
+
+// voxels scatter from random positions and assemble into the banana, same easing/stagger
+// logic as codrops' three.js voxelizer demo (tympanus.net/Tutorials/Voxelizer), adapted
+// here for a single procedurally-built shape instead of a loaded glTF model.
+function scatterAndAssemble() {
+  if (!mesh || !targets) return;
+  const scatterR = objMaxDim * 1.3;
+  for (let i = 0; i < targets.length; i++) {
+    const sx = (Math.random() - 0.5) * 2 * scatterR;
+    const sy = (Math.random() - 0.5) * 2 * scatterR;
+    const sz = (Math.random() - 0.5) * 2 * scatterR;
+    const startColor = new THREE.Color().setHSL(Math.random(), 0.8, 0.8);
+
+    dummy.position.set(sx, sy, sz);
+    dummy.updateMatrix();
+    mesh.setMatrixAt(i, dummy.matrix);
+    mesh.setColorAt(i, startColor);
+
+    const state = { x: sx, y: sy, z: sz, r: startColor.r, g: startColor.g, b: startColor.b };
+    const target = targets[i];
+    const duration = 0.5 + 0.5 * Math.pow(Math.random(), 6);
+
+    gsap.to(state, {
+      delay: 0.2 * Math.random(),
+      duration,
+      x: target.position.x, y: target.position.y, z: target.position.z,
+      r: target.color.r, g: target.color.g, b: target.color.b,
+      ease: 'back.out(3)',
+      onUpdate: () => {
+        dummy.position.set(state.x, state.y, state.z);
+        dummy.updateMatrix();
+        mesh.setMatrixAt(i, dummy.matrix);
+        mesh.setColorAt(i, new THREE.Color(state.r, state.g, state.b));
+        mesh.instanceMatrix.needsUpdate = true;
+        mesh.instanceColor.needsUpdate = true;
+      }
+    });
+  }
+  gsap.to(mesh.rotation, { duration: 1.2, y: '+=' + 1.3 * Math.PI, ease: 'power2.out' });
+}
+
+const commentEl = () => document.querySelector('.banana-comment');
+const DEFAULT_NOTE = '// you just unlocked an easter egg - drag and play';
+
+function openBanana() {
+  document.getElementById('bananaOverlay').hidden = false;
+  document.body.style.overflow = 'hidden'; // stop background page-scroll from stealing the drag gesture
+  if (!ready) initScene();
+  resizeCanvas();
+  controls.autoRotate = true;
+
+  if (!voxelsPromise) {
+    commentEl().textContent = '// voxelizing...';
+    // try the real model first; if it can't be fetched, use the procedural banana
+    voxelsPromise = loadRealModel().catch(() => buildBananaVoxels());
+    voxelsPromise.then((built) => {
+      commentEl().textContent = DEFAULT_NOTE;
+      applyVoxels(built);
+      scatterAndAssemble();
+    });
+  } else {
+    voxelsPromise.then(() => scatterAndAssemble());
+  }
+}
+function closeBanana() {
+  document.getElementById('bananaOverlay').hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.getElementById('tabSources').addEventListener('click', openBanana);
+document.getElementById('bananaClose').addEventListener('click', closeBanana);
+document.getElementById('bananaOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'bananaOverlay') closeBanana();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBanana(); });
+window.addEventListener('resize', () => { if (ready) resizeCanvas(); });
+</script>
+</body></html>
